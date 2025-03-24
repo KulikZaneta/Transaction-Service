@@ -34,6 +34,10 @@ This is a Java-based application that helps you manage financial transactions wi
 4️⃣ After a successful build, run the command to start the application:
 `mvn spring-boot:run`
 
+## 🧪  To run the tests: 🧪 
+- After building the project, run the following command to execute the tests: `mvn test`
+- Maven will run all the tests automatically. The test results will be displayed in the terminal.
+
 ## 🌐 Usage 🌐
 
 The application is available at `http://localhost:8080`. Use the following endpoints to perform various operations on transactions:
