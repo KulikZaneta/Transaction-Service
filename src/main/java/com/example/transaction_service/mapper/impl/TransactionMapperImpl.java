@@ -5,6 +5,7 @@ import com.example.transaction_service.model.Transaction;
 import com.example.transaction_service.model.dto.TransactionDto;
 import org.springframework.stereotype.Component;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -38,7 +39,8 @@ public class TransactionMapperImpl implements TransactionMapper {
     @Override
     public List<TransactionDto> mapToTransactionDtoList(List<Transaction> transactionList) {
         if (transactionList == null || transactionList.isEmpty()) {
-            throw new IllegalArgumentException("Transaction list is empty or null");
+            return Collections.emptyList();
+            //throw new IllegalArgumentException("Transaction list is empty or null");
         }
         return transactionList.stream()
                 .map(this::mapToTransactionDto)

@@ -11,8 +11,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
 public class TransactionMapperTest {
@@ -95,16 +94,19 @@ public class TransactionMapperTest {
         List<Transaction> transactionList = List.of();
 
         // when
-        assertThrows(IllegalArgumentException.class, () -> transactionMapper.mapToTransactionDtoList(transactionList));
+        List<TransactionDto> result = transactionMapper.mapToTransactionDtoList(transactionList);
+
+        // then
+        assertTrue(result.isEmpty());
     }
 
     @Test
     public void testMapToTransactionDtoListNull() {
-        // given
-        List<Transaction> transactionList = null;
-
         // when
-        assertThrows(IllegalArgumentException.class, () -> transactionMapper.mapToTransactionDtoList(null));
+        List<TransactionDto> result = transactionMapper.mapToTransactionDtoList(null);
+
+        // then
+        assertTrue(result.isEmpty());
     }
 }
 

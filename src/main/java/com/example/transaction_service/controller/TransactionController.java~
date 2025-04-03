@@ -68,6 +68,12 @@ public class TransactionController {
             @RequestParam String value) {
 
         return transactionMapper.mapToTransactionDtoList(transactionService.searchByTransactionDetailKeyAndValue(key, value));
+
+        //List<Transaction> transactions = transactionService.searchByTransactionDetailKeyAndValue(key, value);
+
+//        return transactions.stream()
+//                .map(transactionMapper::mapToTransactionDto)
+//                .collect(Collectors.toList());
     }
 }
 
