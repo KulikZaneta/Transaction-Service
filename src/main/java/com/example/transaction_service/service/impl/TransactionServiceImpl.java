@@ -54,17 +54,17 @@ public class TransactionServiceImpl implements TransactionService {
 
     @Override
     public Transaction updateTransaction(Transaction transaction) {
-        if (!transactionRepository.existsById(transaction.getId())) {
-            throw new TransactionNotFoundException("Transaction with id " + transaction.getId() + " not found");
-        }
+        transactionRepository.findById(transaction.getId())
+                .orElseThrow(() -> new TransactionNotFoundException("Transaction with id " + transaction.getId() + " not found"));
+
         return transactionRepository.save(transaction);
     }
 
     @Override
     public void deleteTransaction(Long id) {
-        if (!transactionRepository.existsById(id)) {
-            throw new TransactionNotFoundException("Transaction with id " + id + " not found");
-        }
+        transactionRepository.findById(id)
+                .orElseThrow(() -> new TransactionNotFoundException("Transaction with id " + id + " not found"));
+
         transactionRepository.deleteById(id);
     }
 
